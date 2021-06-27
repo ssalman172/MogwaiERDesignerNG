@@ -171,6 +171,13 @@
         <Entry id="DOYOUREALLYWANTTODELETE">
             <Text lang="de">Wollen Sie das Element wirklich löschen?</Text>
             <Text lang="en">Do you really want to delete this element?</Text>
+        </Entry>  
+        <Entry id="DELETETABLEQUESTION">
+            <Text lang="en">Do you really want to delete this table?</Text>
+        </Entry>
+        <Entry id="DELETEALLTABLES">
+            <Text lang="en">Delete all tables</Text>
+            <Icon>/de/erdesignerng/icons/cancel.png</Icon>
         </Entry>
         <Entry id="CONNECTIONSEEMSTOBEOK">
             <Text lang="de">Die Verbindung scheint zu funktionieren</Text>

@@ -663,7 +663,7 @@ public class JGraphEditor extends DefaultScrollPane implements GenericModelEdito
         if (theCells.size() > 0) {
 
             if (MessagesHelper.displayQuestionMessage(graph,
-                    ERDesignerBundle.DOYOUREALLYWANTTODELETE)) {
+                    ERDesignerBundle.DELETETABLEQUESTION)) {
                 try {
                     graph.commandDeleteCells(theCells);
                 } catch (VetoException ex) {
