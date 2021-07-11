@@ -106,8 +106,6 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
     private DefaultAction zoomInAction;
 
     private DefaultAction zoomOutAction;
-    
-    private DefaultAction deleteAllTableButton;
 
     private static final ZoomInfo ZOOMSCALE_HUNDREDPERCENT = new ZoomInfo(
             "100%", 1);
@@ -442,10 +440,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
                 e -> zoomIn(), this, ERDesignerBundle.ZOOMIN);
 
         zoomOutAction = new DefaultAction(
-                e -> zoomOut(), this, ERDesignerBundle.ZOOMOUT);
-        
-        deleteAllTableButton = new DefaultAction(
-                e -> deleteAllTables(), this, ERDesignerBundle.DELETEALLTABLES);
+                e -> zoomOut(), this, ERDesignerBundle.ZOOMOUT);       
 
         DefaultAction theGenerateSQL = new DefaultAction(
                 new GenerateSQLCommand(), this,
@@ -755,8 +750,7 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
         theToolBar.addSeparator();
         theToolBar.add(zoomInAction);
         theToolBar.add(zoomOutAction);
-        theToolBar.addSeparator();
-        theToolBar.add(deleteAllTableButton);
+        theToolBar.addSeparator();        
         theToolBar.addSeparator();
 
         handButton = new DefaultToggleButton(handAction);
@@ -810,10 +804,6 @@ public final class ERDesignerComponent implements ResourceHelperProvider {
             zoomBox.setSelectedIndex(theIndex);
             editor.commandSetZoom((ZoomInfo) zoomBox.getSelectedItem());
         }
-    }
-    
-    private void deleteAllTables() {
-    	
     }
 
     protected boolean checkForValidConnection() {

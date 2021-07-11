@@ -172,12 +172,13 @@
             <Text lang="de">Wollen Sie das Element wirklich löschen?</Text>
             <Text lang="en">Do you really want to delete this element?</Text>
         </Entry>  
-        <Entry id="DELETETABLEQUESTION">
-            <Text lang="en">Do you really want to delete this table?</Text>
+        <Entry id="DELETETABLE">
+            <Text lang="de">Löschen</Text>
+            <Text lang="en">Delete (Alt+D)</Text>
+            <Icon>/de/erdesignerng/icons/delete.png</Icon>
         </Entry>
-        <Entry id="DELETEALLTABLES">
-            <Text lang="en">Delete all tables</Text>
-            <Icon>/de/erdesignerng/icons/cancel.png</Icon>
+        <Entry id="DELETEALLRELATION">
+            <Text lang="en">Delete all relation for this table</Text>
         </Entry>
         <Entry id="CONNECTIONSEEMSTOBEOK">
             <Text lang="de">Die Verbindung scheint zu funktionieren</Text>
@@ -504,7 +505,7 @@
         </Entry>
         <Entry id="ADDTONEWSUBJECTAREA">
             <Text lang="de">Zu einem neuen Subject Area hinzufügen</Text>
-            <Text lang="en">Add to new subject area</Text>
+            <Text lang="en">Add to new subject area (Alt+S)</Text>
         </Entry>
         <Entry id="SUBJECTAREAPROPERTIES">
             <Text lang="de">Eigenschaften des Subject Areas</Text>

@@ -34,6 +34,7 @@ import de.mogwai.common.client.looks.UIInitializer;
 import de.mogwai.common.client.looks.components.DefaultPopupMenu;
 import de.mogwai.common.client.looks.components.action.DefaultAction;
 import de.mogwai.common.client.looks.components.renderer.DefaultCellRenderer;
+import de.erdesignerng.visual.MessagesHelper;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -91,7 +92,7 @@ public class DataBrowserEditor extends BaseEditor {
 
         currentModel = aTable.getOwner();
         currentDialect = aTable.getOwner().getDialect();
-
+        
         Map<Attribute<Table>, Object> theWhereValues = new HashMap<>();
 
         DataBrowserModel theModel = sqlBindingInfo.getDefaultModel();
@@ -337,7 +338,7 @@ public class DataBrowserEditor extends BaseEditor {
                 updateTableColumnWIdth();
 
             } catch (Exception e) {
-                logFatalError(e);
+                MessagesHelper.displayErrorMessage(this, "Can't get query for this table.");
             }
         }
 

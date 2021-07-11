@@ -34,7 +34,7 @@ import javax.swing.JPopupMenu;
  *
  * @author mirkosertic
  */
-public final class ContextMenuFactory {
+public final class ContextMenuFactory{
 
     private ContextMenuFactory() {
     }
@@ -48,6 +48,7 @@ public final class ContextMenuFactory {
 
         final List<ModelItem> theNewSubjectAreaItems = new ArrayList<>();
         final List<ModelItem> theItemsToBeDeleted = new ArrayList<>();
+        final List<ModelItem> deleteRelationContainer = new ArrayList<>();
 
         for (ModelItem theUserObject : aItemList) {
             if (theUserObject instanceof Table) {
@@ -100,7 +101,7 @@ public final class ContextMenuFactory {
 
                     aMenu.add(theShowRelationsItem);
                 }
-
+                
                 theNewSubjectAreaItems.add(theTable);
                 theItemsToBeDeleted.add(theTable);
             }
@@ -147,14 +148,25 @@ public final class ContextMenuFactory {
 
                 Relation theRelation = (Relation) theUserObject;
 
-                JMenuItem theEditItem = new JMenuItem();
+                JMenuItem theEditItem = new JMenuItem();                
                 theEditItem.setText(theHelper.getFormattedText(
                         ERDesignerBundle.EDITRELATION, theRelation.getName()));
                 theEditItem.addActionListener(new EditRelationCommand(theRelation));
 
                 aMenu.add(theEditItem);
                 theItemsToBeDeleted.add(theRelation);
+                deleteRelationContainer.add(theRelation);
             }
+            
+            if (theItemsToBeDeleted.size() > 0 && aEditor.supportsDeletionOfObjects()) {
+
+            DefaultAction theDeleteAction = new DefaultAction(
+                    ERDesignerBundle.BUNDLE_NAME, ERDesignerBundle.DELETEALLRELATION);
+            DefaultMenuItem theDeleteItem = new DefaultMenuItem(theDeleteAction);
+            theDeleteAction.addActionListener(e -> ERDesignerComponent.getDefault().commandDelete(deleteRelationContainer));
+            aMenu.add(theDeleteItem);
+        }
+
             if (theUserObject instanceof Comment) {
                 Comment theComment = (Comment) theUserObject;
                 JMenuItem theEditItem = new JMenuItem();
@@ -245,6 +257,7 @@ public final class ContextMenuFactory {
                     ERDesignerBundle.BUNDLE_NAME,
                     ERDesignerBundle.ADDTONEWSUBJECTAREA);
             DefaultMenuItem theAddItem = new DefaultMenuItem(theAddAction);
+            theAddItem.setMnemonic('S');
             theAddAction.addActionListener(e -> ERDesignerComponent.getDefault()
                     .commandAddToNewSubjectArea(theNewSubjectAreaItems));
 
@@ -255,11 +268,12 @@ public final class ContextMenuFactory {
         if (theItemsToBeDeleted.size() > 0 && aEditor.supportsDeletionOfObjects()) {
 
             DefaultAction theDeleteAction = new DefaultAction(
-                    ERDesignerBundle.BUNDLE_NAME, ERDesignerBundle.DELETE);
+                    ERDesignerBundle.BUNDLE_NAME, ERDesignerBundle.DELETETABLE);
             DefaultMenuItem theDeleteItem = new DefaultMenuItem(theDeleteAction);
+            theDeleteItem.setMnemonic('D');
             theDeleteAction.addActionListener(e -> ERDesignerComponent.getDefault().commandDelete(theItemsToBeDeleted));
             aMenu.addSeparator();
             aMenu.add(theDeleteItem);
-        }
+        }        
     }
 }
